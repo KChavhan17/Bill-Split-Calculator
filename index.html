@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bill Split Calculator</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 50px;
+        }
+
+        .container {
+            background: white;
+            padding: 20px;
+            width: 300px;
+            margin: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        input {
+            width: 90%;
+            padding: 8px;
+            margin: 8px 0;
+        }
+
+        button {
+            padding: 8px 15px;
+            background-color: green;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: darkgreen;
+        }
+
+        #result {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Bill Split Calculator</h2>
+
+        <input type="number" id="amount" placeholder="Enter Total Bill">
+        <input type="number" id="people" placeholder="Number of People">
+
+        <button onclick="splitBill()">Calculate</button>
+
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function splitBill() {
+            let amount = parseFloat(document.getElementById("amount").value);
+            let people = parseInt(document.getElementById("people").value);
+
+            if (!isNaN(amount) && !isNaN(people) && amount > 0 && people > 0) {
+                let share = (amount / people).toFixed(2);
+                document.getElementById("result").innerText =
+                    "Each person pays: ₹" + share;
+            } else {
+                document.getElementById("result").innerText =
+                    "Please enter valid positive numbers.";
+            }
+        }
+    </script>
+
+</body>
+</html>
